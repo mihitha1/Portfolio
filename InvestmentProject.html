@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title> Student Investments</title>
+       
+    </head>
+    <body>
+        <script>
+
+            var names = new Array();
+            var memberInvestment = new Array();
+            
+            var numberOfMembers = Number(prompt("Enter number of members"));
+            if (numberOfMembers <= 10){
+                for(var i = 0; i < numberOfMembers; i++){
+                var memberName = prompt("Enter name of member");
+                names[i] = memberName;
+                var memberInvestmentAmount = Number(prompt("Enter "+memberName+"'s investment amount "));
+                memberInvestment[i] = memberInvestmentAmount;
+            }
+            }
+
+            else{
+                alert("ERROR");
+            }
+
+            function sInvestment(s){
+                var s_investment = s[0];
+                var s_investment_address = 0;
+                for (var i = 1; i < numberOfMembers; i++){
+                    if(s[i] < s_investment){
+                        s_investment = s[i];
+                        s_investment_address = i;
+                    }
+                }
+            return s_investment_address;
+            }
+            
+            function lInvestment(l){
+                var l_investment = l[0];
+                var l_investment_address = 0;
+                for (var i = 0; i < numberOfMembers; i++){
+                    if(l[i] > l_investment){
+                        l_investment = l[i];
+                        l_investment_address = i;
+                    }
+                }
+            return l_investment_address;
+            }
+
+            function sumOfInvestment(s){
+                var sum = s[0];
+                for(var i = 1; i < numberOfMembers; i++)
+                {
+                    sum = sum + s[i];
+                }
+                return sum;
+            }
+            
+            for(var i = 0; i < numberOfMembers; i++){
+                var randomProjectedGrowth = Math.floor(Math.random() * 100) + 1; // random number between 1 and 100
+            }
+                
+
+            function Earnings(names,memberInvestmentAmount){   
+                for(var i = 0; i < numberOfMembers; i++){
+                    document.write("Projected Earnings for "+names[i]+": $"+ ((randomProjectedGrowth/100) * memberInvestment[i]).toFixed(2)+"<br>");
+                }
+                return document.write;
+            }
+                
+            document.write ("<h1>Investment Club</h1>");
+            document.write ("<h2>Summary Report</h2>");
+            var d = new Date();
+            document.write ("Report Date: "+d + "<br>");
+            document.write ("<i>(All $ numbers in thousands)</i>");
+            document.write ("<hr>");
+            document.write ("<br>")
+
+                var smallestInvestmentIndex = sInvestment(memberInvestment);
+                var smallInvestorName = names[smallestInvestmentIndex];
+                var smallestInvestmentValue = memberInvestment[smallestInvestmentIndex];
+                document.write ("<b>Smallest Investment: </b>");
+                document.write (smallInvestorName);
+                document.write (", $"+smallestInvestmentValue + "<br>");
+        
+        
+                var largestInvestmentIndex = lInvestment(memberInvestment);
+                var largeInvestorName = names[largestInvestmentIndex];
+                var largestInvestmentValue = memberInvestment[largestInvestmentIndex];
+                document.write ("<b>Largest Investment: </b>");
+                document.write (largeInvestorName);
+                document.write (", $"+largestInvestmentValue + "<p>");
+
+     
+                document.write ("<b>Total Investment: </b>");
+                document.write ("$"+sumOfInvestment(memberInvestment) + "<br>");
+ 
+
+                document.write("<b>Average Investment: </b>");
+                document.write("$"+sumOfInvestment(memberInvestment)/numberOfMembers + "<p>");
+
+                document.write("<b>Projected Growth: </b>");
+                document.write((randomProjectedGrowth+"%") + "<br>");
+
+                var projected = Earnings(names, memberInvestment);
+
+           
+            </script>
+        </p>
+
+    </body>
+    </html>

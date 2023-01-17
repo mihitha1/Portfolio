@@ -1,0 +1,55 @@
+
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>Pizza Orders</title>
+    </head>
+    <body>
+        <script>
+            var purchaseTYPE = prompt("Enter purchase type: (Store or Delivery)");
+            var numberOfPies = prompt("Enter number of pies:");
+            var numberOfToppings = prompt("Enter number of toppings:");
+            var priceOfPie = 15 
+            var priceOfTopping = 0.50
+            var totalPrice = 0;
+            var purchasePrice = 0, Store, Delivery
+            var finalCost = 0;
+            var salesTaxAmount = 0.07; 
+            var salesTax = 0;
+            purchasePrice = priceOfPie*numberOfPies + priceOfTopping*numberOfToppings*numberOfPies;
+            var contactless = '';
+            var tipAmount = 0;
+        
+            if(purchaseTYPE.toUpperCase() == "STORE"){
+                var numberOfFountainDrinks = prompt("Enter number of drinks: ");
+                var priceOfFountainDrink = 2;
+                totalPrice = purchasePrice + priceOfFountainDrink*numberOfFountainDrinks;
+                salesTax = (totalPrice) * salesTaxAmount;
+                alert("Total price: $" + totalPrice.toFixed(2));
+                alert("Sales Tax: $" + salesTax.toFixed(2));
+                finalCost = totalPrice + salesTax;
+                alert("Final Cost: $" + finalCost.toFixed(2));
+            }
+
+            else{
+                var deliveryFee = 3;
+                var deliveryPrice;
+                deliveryPrice = deliveryFee + purchasePrice;
+                salesTax = deliveryPrice * salesTaxAmount;
+                var Tip = prompt("Enter tip option: (Yes/No)");
+                totalPrice = deliveryPrice;
+                if(Tip.toUpperCase() == "YES"){
+                    tipAmount = 1*prompt("Enter Tip Amount:"); 
+                }
+                var contactlessDelivery = prompt("Enter contactless option?(Yes/No)");
+                alert("Total price: $" + totalPrice.toFixed(2));
+                alert("Sales Tax: $" + salesTax.toFixed(2));
+                alert("Tip Amount: $" + tipAmount.toFixed(2));
+                finalCost = totalPrice + salesTax + tipAmount;
+                alert("Final Cost: $" + finalCost.toFixed(2));
+                alert("Contactless Delivery: " + contactlessDelivery);
+            }
+
+        </script>
+    </body>
+</html>

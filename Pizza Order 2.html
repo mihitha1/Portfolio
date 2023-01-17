@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>Pizza Orders</title>
+       
+        <style>
+            body{
+                background-color: lightpink;
+                color: purple;
+            }
+            table {
+          font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Pizzeria Orders</h1>
+        <h2>Inputs</h2>
+        <p>
+            <table>
+                <tr>
+                    <td>Purchase Type:</td>
+                    <td>
+                        Store <input type="radio" name = "purchaseType" id = "store" onclick = " ">  
+                        Delivery <input type="radio" name = "purchaseType" id = "delivery" onclick = " ">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Number of Pies</td>
+                    <td><input type="text" id = "pies" onchange = " "></td>
+                </tr>
+                <tr>
+                    <td>Number of Toppings</td>
+                    <td><input type="text" id = "toppings" onchange = " "></td>
+                </tr>
+                <tr>
+                    <td>Number of Drinks (Store orders only)</td>
+                    <td><input type="text" id = "drinks" onchange = " "></td>
+                </tr> 
+                <tr>
+                    <td>Delivery Tip (Delivery orders only)</td>
+                    <td>
+                        Yes <input type="radio" name = "tip" id = "yesTip" onclick = " ">  
+                        No <input type="radio" name = "tip" id = "noTip" onclick = " "> 
+                    </td>
+                    <tr>
+                        <td>Tip Amount (Delivery orders only)</td>
+                        <td><input type="text" id = "tip" onchange = " "></td>
+                    </tr>
+                    <tr>
+                        <td>Contactless Delivery (Delivery orders only)</td>
+                        <td>
+                        Yes <input type="radio" name = "contactlessDelivery" id = "yesContactlessDelivery" onclick = " ">  
+                        No <input type="radio" name = "contactlessDelivery" id = "noContactlessDelivery" onclick = " "> 
+                        </td>
+                    </tr>
+                </tr>
+            </table>
+        </p>
+    
+            <button id="process" onclick = "
+                var piePrice = 15;
+                var toppingPrice = 0.50;
+                var drinkPrice = 2;
+                var deliveryFee = 3;
+                var salesTaxPercentage = 0.07;
+
+                if (store.checked) {
+                var purchasePrice = Number(pies.value * piePrice) + Number(toppings.value * toppingPrice * Number(pies.value)) + Number(drinks.value * drinkPrice);
+                var salesTaxAmount = purchasePrice * salesTaxPercentage.toFixed(2);
+                var totalCost = purchasePrice + salesTaxAmount;
+                finalCost.value = totalCost.toFixed(2);
+                }
+                
+                else{
+                var purchasePrice = Number(pies.value * piePrice) + Number(toppings.value * toppingPrice * Number(pies.value))+ deliveryFee;
+                var salesTaxAmount = purchasePrice * salesTaxPercentage.toFixed(2);
+                var tipValue = Number(tip.value *1);
+                var totalCost = purchasePrice + salesTaxAmount + tipValue;
+                if(yesContactlessDelivery.checked) {
+                    contactlessDelivery.value = 'Yes';
+                }
+                if(noContactlessDelivery.checked) {
+                    contactlessDelivery.value = 'No'
+                }
+                }
+
+                totalPrice.value = purchasePrice.toFixed(2);
+                salesTax.value = salesTaxAmount.toFixed(2);
+                tipAmount.value = tipValue.toFixed(2);
+                finalCost.value = totalCost.toFixed(2);
+            ">Process</button>
+
+            <button id="clear" onclick = "
+            store.checked = false;
+            delivery.checked = false;
+            pies.value='';
+            toppings.value='';
+            drinks.value='';
+            yesTip.checked = false;
+            noTip.checked = false;
+            tip.value='';
+            yesContactlessDelivery.checked = false;
+            noContactlessDelivery.checked = false;
+            totalPrice.value='';
+            salesTax.value='';
+            tipAmount.value='';
+            contactlessDelivery.value='';
+            finalCost.value='';
+            ">Clear</button>
+        </p>
+
+        <p><h2>Outputs</h2></p>
+        <p>
+            <table>
+                <tr>
+                    <td>Total Price</td>
+                    <td>$<input type="text" id = "totalPrice" onchange = " "></td>
+                </tr>
+                <tr>
+                    <td>Sales Tax</td>
+                    <td>$<input type="text" id = "salesTax" onchange = " "></td>
+                </tr>
+                <tr>
+                    <td>Tip Amount</td>
+                    <td>$<input type="text" id = "tipAmount" onchange = " "></td>
+                </tr>
+                <tr>
+                    <td>Final Cost</td>
+                    <td>$<input type="text" id = "finalCost" onchange = " "></td>
+                </tr>
+                <tr>
+                    <td>Contactless Delivery</td>
+                    <td><input type="text" id = "contactlessDelivery" onchange = " "></td>
+                </tr>
+            </table>
+        </p>
+        
+    </body>
+</html>
